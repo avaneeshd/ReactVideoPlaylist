@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import DropDownMenu from 'material-ui/lib/drop-down-menu';
+import playlistAction from '../../actions/PlayListActions';
 
 export default class Playlist extends React.Component{
 	/*
@@ -10,16 +11,16 @@ export default class Playlist extends React.Component{
 	}
 
 	handleChange(event, selectedIndex, menuItem) {
-		console.log(selectedIndex);
+		console.log(menuItem.text);
+		playlistAction.fetch(menuItem.text);
 	}
 
 	render(){
 		let menuItems = [
-			{ payload: '1', text: 'Never' },
-			{ payload: '2', text: 'Every Night' },
-			{ payload: '3', text: 'Weeknights' },
-			{ payload: '4', text: 'Weekends' },
-			{ payload: '5', text: 'Weekly' },
+			{ payload: '1', text: 'Elton John' },
+			{ payload: '2', text: 'Stevie Wonder' },
+			{ payload: '3', text: 'Frank Sinatra' },
+			{ payload: '4', text: 'Louis Armstrong' }
 		];
 		return (
 			<div>

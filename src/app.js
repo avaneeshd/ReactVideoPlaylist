@@ -1,7 +1,7 @@
 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Playlist from './modules/Playlist/Playlist';
+import PlaylistContainer from './modules/PlaylistContainer/PlaylistContainer';
 import materialUI from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -15,5 +15,5 @@ if (window.addEventListener) {
 }
 
 function run(){
-	ReactDOM.render(<Playlist/> , document.getElementById("app"));
+	ReactDOM.render(<PlaylistContainer/> , document.getElementById("app"));
 }
