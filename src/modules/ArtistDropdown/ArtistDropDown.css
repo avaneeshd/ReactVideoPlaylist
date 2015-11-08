@@ -1,0 +1,7 @@
+.ArtistDropDown-container{
+    margin: 0 30px;
+}
+
+.ArtistDropDown-container > div{
+    width:100%;
+}

@@ -24,6 +24,12 @@ gulp.task('build-server', function(){
 		.pipe(gulp.dest('build'));
 });
 
+gulp.task('build-css', function(){
+	return gulp.src('src/**/*.css')
+			.pipe(concat('style.css'))
+			.pipe(gulp.dest('build/public'));
+});
+
 gulp.task('start', function () {
 	console.log("Starting server");
 	nodemon({
@@ -32,8 +38,8 @@ gulp.task('start', function () {
 	})
 });
 
-gulp.task('watch', ['build', 'build-server', 'start'], function () {
-	gulp.watch('*.js', ['build', 'build-server', 'start']);
+gulp.task('watch', ['build', 'build-server', 'build-css', 'start'], function () {
+	gulp.watch('*.js', ['build', 'build-server', 'build-css', 'start']);
 });
 
 gulp.task('default', ['watch']);

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import PlaylistContainer from './modules/PlaylistContainer/PlaylistContainer';
 import materialUI from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import playlistStore from './stores/PlaylistStore';
 
 
 injectTapEventPlugin();

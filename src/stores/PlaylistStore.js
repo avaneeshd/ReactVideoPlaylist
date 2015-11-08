@@ -26,8 +26,10 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 			if(err){
 				console.log(err);
 			}else{
-				playlistStore._playlistItems = results.items;
-				playlistStore.emit(CHANGE_EVENT);
+				if(results.items.length > 0) {
+					playlistStore._playlistItems = results.items;
+					playlistStore.emit(CHANGE_EVENT);
+				}
 			}
 		});
 	},

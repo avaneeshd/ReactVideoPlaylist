@@ -12,7 +12,7 @@ export default class Playlist extends React.Component{
 
 	render(){
 		return (
-			<div>
+			<div className="playlist-outer">
 				<ArtistDropdown/>
 				<List items={this.props.items} />
 			</div>

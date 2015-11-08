@@ -1,7 +1,9 @@
 
 import React, { PropTypes } from 'react';
 import Playlist from '../Playlist/Playlist';
+import Paper from 'material-ui/lib/paper';
 import playlistStore from '../../stores/PlaylistStore';
+import playListActions from '../../actions/PlayListActions';
 
 export default class PlaylistContainer extends React.Component{
 	/* Basic React component*/
@@ -28,11 +30,11 @@ export default class PlaylistContainer extends React.Component{
 	}
 
 	render(){
+		let items = this.state.items;
 		return (
-			<div>
-				PlayList:
-				<Playlist items={this.state.items} />
-			</div>
+			<Paper zDepth={3} rounded={false} className="PlaylistContainer-outer">
+				<Playlist items={items} />
+			</Paper>
 		);
 	}
 }
