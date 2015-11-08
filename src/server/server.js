@@ -6,7 +6,9 @@ import React from 'react';
 import ReactDOM from '../../node_modules/react-dom/server';
 
 import router from './router';
-import App from '../app'
+import Playlist from '../modules/Playlist/Playlist';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const server = express();
 
@@ -22,9 +24,11 @@ const template = _.template(fs.readFileSync(templateFile, 'UTF-8'));
 /* ---- Handle requests ---- */
 server.get('*', (req, res, next) => {
 
+
+	injectTapEventPlugin();
 	/* ---- Render App and inject into html ---- */
 	let data = {body: ''};
-	data.body = ReactDOM.renderToString(<App/>);
+	data.body = ReactDOM.renderToString(<Playlist/>);
 	const html = template(data);
 
 	res.status(200).send(html);

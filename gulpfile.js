@@ -5,10 +5,12 @@ var source = require('vinyl-source-stream');
 var babel = require('gulp-babel');
 var nodemon = require('gulp-nodemon');
 var concat = require('gulp-concat');
+var reactify = require('reactify');
 
 gulp.task('build', function () {
-	return browserify({entries: './src/app.js', extensions: ['.js'], debug: true})
+	return browserify({entries: './src/app.js', debug: true})
 		.transform(babelify, {presets: ["es2015", "react"]})
+		.transform(reactify, {harmony:true, es6module:true})
 		.bundle()
 		.pipe(source('bundle.js'))
 		.pipe(gulp.dest('build/public'));
@@ -31,7 +33,7 @@ gulp.task('start', function () {
 });
 
 gulp.task('watch', ['build', 'build-server', 'start'], function () {
-	gulp.watch('*.js', ['start']);
+	gulp.watch('*.js', ['build', 'build-server', 'start']);
 });
 
 gulp.task('default', ['watch']);
