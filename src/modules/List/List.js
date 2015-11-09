@@ -18,10 +18,14 @@ export default class List extends React.Component{
 			let snippet = item.snippet;
 			snippet.id = item.id.videoId;
 			return snippet;
-		})
+		});
 
 		data.forEach(function(item){
-			listItems.push(<div><ListItem data={item} key={item.id} /> <ListDivider /></div>);
+			listItems.push(
+				<div key={item.id}>
+					<ListItem data={item} />
+					<ListDivider />
+				</div>);
 		});
 
 		return (

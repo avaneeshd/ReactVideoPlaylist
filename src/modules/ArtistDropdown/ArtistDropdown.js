@@ -14,6 +14,7 @@ export default class Playlist extends React.Component{
 		playlistAction.fetch();
 		this.handleChange = this.handleChange.bind(this);
 		this.state = {currentArtist : '1'};
+		playlistAction.fetch('Elton John');
 	}
 
 	init(){
@@ -22,7 +23,7 @@ export default class Playlist extends React.Component{
 			{ payload: '2', text: 'Stevie Wonder' },
 			{ payload: '3', text: 'Frank Sinatra' },
 			{ payload: '4', text: 'Louis Armstrong' },
-			{ payload: '5', text: 'Taylor Swift' },
+			{ payload: '5', text: 'Taylor Swift' }
 		];
 	}
 

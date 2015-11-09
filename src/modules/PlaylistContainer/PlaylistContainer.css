@@ -1,4 +1,6 @@
 .PlaylistContainer-outer{
-    margin: 30px;
-    padding: 20px;
+    margin: 0 5%;
+    padding: 10px;
+    float:left;
+    width:90%
 }

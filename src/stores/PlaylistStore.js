@@ -6,32 +6,59 @@ import http from 'http';
 import Youtube from 'youtube-node';
 
 let CHANGE_EVENT = "change";
+let PLAY_EVENT = "play";
+
 const FETCH_PLAYLIST = "FETCH_PLAYLIST";
+const PLAY_VIDEO = "PLAY_VIDEO";
+
 const YOUTUBE_API_KEY = "AIzaSyASznBtMlI2_3nNzVNPDmGJ3Gv93P4ndFs";
+const YOUTUBE_URL = "http://www.youtube.com/watch?v=";
 
 let playlistStore = assign({}, EventEmitter.prototype , {
 
 	_playlistItems: [],
+	_playlist: [],
+	_currentIndex: 0,
+	_currentVideo: null,
 	youTube: new Youtube(),
 
 	initialize :function (){
 		this.youTube.setKey(YOUTUBE_API_KEY);
 	},
 
-	getPlaylist: function(artistName){
-		if(!artistName){
-			artistName = "Elton John";
-		}
-		this.youTube.search(artistName, 10, function(err, results){
-			if(err){
-				console.log(err);
-			}else{
-				if(results.items.length > 0) {
-					playlistStore._playlistItems = results.items;
-					playlistStore.emit(CHANGE_EVENT);
+	fetchPlaylist: function(artistName){
+		if(artistName) {
+			this.youTube.addParam('type', 'video');
+			this.youTube.search(artistName, 10, function (err, results) {
+				if (err) {
+					console.log(err);
+				} else {
+					if (results.items.length > 0) {
+						playlistStore._playlist = [];
+						playlistStore._playlistItems = results.items;
+						playlistStore._playlistItems.forEach(function(item){
+							playlistStore._playlist.push(item.id.videoId);
+						});
+						playlistStore._currentIndex = 0;
+
+						playlistStore.emit(CHANGE_EVENT);
+					}
 				}
+			});
+		}
+	},
+
+	playVideo: function(videoId){
+		console.log("play video");
+		playlistStore._playlistItems.some(function(item, index){
+			if(item.id.videoId == videoId){
+				playlistStore._currentIndex = index;
+				playlistStore._currentVideo = item;
 			}
+			return item.id.videoId == videoId;
 		});
+
+		playlistStore.emit(PLAY_EVENT);
 	},
 
 	dispatcherIndex: AppDispatcher.register(function(payload){
@@ -39,7 +66,10 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 		playlistStore.initialize();
 		switch (action.actionType) {
 			case FETCH_PLAYLIST:
-				playlistStore.getPlaylist(action.data.artist);
+				playlistStore.fetchPlaylist(action.data.artist);
+				break;
+			case PLAY_VIDEO:
+				playlistStore.playVideo(action.data.videoId);
 				break;
 		}
 		return true;
