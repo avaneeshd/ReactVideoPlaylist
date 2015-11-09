@@ -13,7 +13,7 @@ export default class Playlist extends React.Component{
 	render(){
 		return (
 			<div className="playlist-outer">
-				<ArtistDropdown/>
+				<ArtistDropdown showProgress={false}/>
 				<List items={this.props.items} />
 			</div>
 		);

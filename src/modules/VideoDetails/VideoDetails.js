@@ -4,20 +4,27 @@ import playlistStore from '../../stores/PlaylistStore';
 
 export default class VideoDetails extends React.Component {
 	/* Basic React component*/
-	constructor() {
-		super();
-		this.state = {title: "", date: ""};
+	constructor(props) {
+		super(props);
+		this.state = {videoId: props.video, title: "", date: ""};
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentDidMount() {
-		playlistStore.addListener("play", this.handleChange);
+	componentWillReceiveProps(newProps){
+		if(newProps.video !== this.props.video){
+			this.setState({videoId: newProps.video});
+			this.handleChange(newProps.video);
+		}
 	}
 
-
-	handleChange() {
-		console.log("update vidoe details" , playlistStore._currentVideo);
-		this.setState({title: playlistStore._currentVideo.snippet.title, date: playlistStore._currentVideo.snippet.publishedAt});
+	handleChange(videoId) {
+		if(videoId && playlistStore._currentVideo) {
+			console.log("update video details", playlistStore._currentVideo);
+			this.setState({
+				title: playlistStore._currentVideo.snippet.title,
+				date: playlistStore._currentVideo.snippet.publishedAt
+			});
+		}
 	}
 
 

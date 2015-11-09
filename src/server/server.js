@@ -8,6 +8,7 @@ import ReactDOM from '../../node_modules/react-dom/server';
 import router from './router';
 import PlaylistContainer from '../modules/PlaylistContainer/PlaylistContainer';
 import PlayListActions from '../actions/PlayListActions';
+import PlayListStore from '../stores/PlayListStore';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -28,12 +29,22 @@ server.get('*', (req, res, next) => {
 	injectTapEventPlugin();
 	/* ---- Render App and inject into html ---- */
 	PlayListActions.fetch("");
-	let data = {body: ''};
-	data.body = ReactDOM.renderToString(<PlaylistContainer/>);
-	const html = template(data);
 
-	res.status(200).send(html);
-	next();
+	PlayListStore.fetchPlaylist("Elton John", function(err, items, playlist){
+		if(err){
+
+		}else {
+			let data = {body: ''};
+			data.body = ReactDOM.renderToString(<PlaylistContainer items={items}  playlist={playlist}/>);
+			data.serializedItems = JSON.stringify(items);
+			data.serializedPlaylist= JSON.stringify(playlist);
+			const html = template(data);
+
+			res.status(200).send(html);
+			next();
+		}
+	});
+
 });
 
 /* ----  Run the server on port 3000 ---- */

@@ -1,7 +1,15 @@
 .ArtistDropDown-container{
-    margin: 0 30px;
+    margin: 0 30px 0 16px
 }
 
 .ArtistDropDown-container > div{
     width:100% !important;
+}
+
+.showProgress{
+    display: inline-block;
+}
+
+.hideProgress{
+    display: none;
 }

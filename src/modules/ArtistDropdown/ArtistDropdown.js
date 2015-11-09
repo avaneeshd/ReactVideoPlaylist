@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import playlistAction from '../../actions/PlayListActions';
+import CircularProgress from 'material-ui/lib/circular-progress'
 
 export default class Playlist extends React.Component{
 	/*
@@ -11,10 +12,8 @@ export default class Playlist extends React.Component{
 	constructor(){
 		super();
 		this.init();
-		playlistAction.fetch();
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {currentArtist : '1'};
-		playlistAction.fetch('Elton John');
+		this.state = {currentArtist : '1', showProgress: false};
 	}
 
 	init(){
@@ -27,13 +26,19 @@ export default class Playlist extends React.Component{
 		];
 	}
 
+	componentWillReceiveProps(newprops){
+		this.setState({showProgress: newprops.showProgress});
+	}
+
 	handleChange(event, selectedIndex, menuItem) {
 		console.log("MENU ITEM"+ menuItem.text);
 		this.setState({currentArtist: menuItem.payload});
 		playlistAction.fetch(menuItem.text);
+		this.setState({showProgress: true});
 	}
 
 	render(){
+	    let progressBarClass = this.state.showProgress ? "showProgress": "hideProgress";
 		return (
 			<div className="ArtistDropDown-container">
 				<SelectField
@@ -45,6 +50,9 @@ export default class Playlist extends React.Component{
 					displayMember="text"
 					floatingLabelText="Artists"
 					onChange={this.handleChange}/>
+				<div className={progressBarClass}>
+					<CircularProgress mode="indeterminate" size={0.4}/>
+				</div>
 			</div>
 		);
 	}

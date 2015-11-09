@@ -23,15 +23,20 @@ export default class Player extends React.Component {
 		loadAPI().then(this.createPlayer);
 	}
 
-	componentDidMount(){
-		playListStore.addListener("change", this.onChange);
-	}
-
 
 	componentWillReceiveProps(newProps){
-		if(newProps.video !== this.props.video){
+		console.log("Received  props");
+		this.setState({
+			videoIndex: newProps.video,
+			playlist: newProps.playlist
+		});
+
+		if(newProps.playlist[newProps.video] !== this.props.playlist[this.props.video]){
+			console.log("Not same");
 			this.onPlay(newProps.video);
+			this.onChange(newProps.playlist, newProps.video);
 		}
+
 	}
 
 	createPlayer(){
@@ -46,23 +51,22 @@ export default class Player extends React.Component {
 		});
 	}
 
-	onChange(){
-		if(playListStore._playlist.length > 0) {
-			this.setState({videoIndex:playListStore._currentIndex,  playlist:playListStore._playlist});
+	onChange(playlist, index){
+		if(this.state.playlist.length > 0) {
 			if(this.state.playerIsReady) {
-				this.loadPlaylist();
+				this.loadPlaylist(playlist, index);
 			}
 		}
 	}
 
 	onPlayerReady(){
 		this.setState({playerIsReady:true});
-		this.loadPlaylist();
+		this.loadPlaylist(this.state.playlist, this.state.videoIndex);
 	}
 
-	loadPlaylist(){
-		if(this.player && playListStore._playlist.length > 0) {
-			this.player.loadPlaylist(playListStore._playlist, playListStore._currentIndex, 0, "large");
+	loadPlaylist(playlist, index){
+		if(this.player && playlist.length > 0) {
+			this.player.loadPlaylist(playlist, index, 0, "large");
 		}
 	}
 
@@ -79,7 +83,7 @@ export default class Player extends React.Component {
 				<div className="videoWrapper">
 					<div id="player"></div>
 				</div>
-				<VideoDetails/>
+				<VideoDetails video={this.state.playlist[this.state.videoIndex]} />
 			</div>
 		);
 	}

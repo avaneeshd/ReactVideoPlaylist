@@ -16,5 +16,15 @@ if (window.addEventListener) {
 }
 
 function run(){
-	ReactDOM.render(<PlaylistContainer/> , document.getElementById("app"));
+	let items =[];
+	let playlist = [];
+	if(window.items !== undefined){
+		items = window.items;
+	}
+
+	if(window.playlist !== undefined){
+		playlist = window.playlist;
+	}
+
+	ReactDOM.render(<PlaylistContainer items={items}  playlist={playlist}/> , document.getElementById("app"));
 }

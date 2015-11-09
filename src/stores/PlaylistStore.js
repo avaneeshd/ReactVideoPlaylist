@@ -12,7 +12,6 @@ const FETCH_PLAYLIST = "FETCH_PLAYLIST";
 const PLAY_VIDEO = "PLAY_VIDEO";
 
 const YOUTUBE_API_KEY = "AIzaSyASznBtMlI2_3nNzVNPDmGJ3Gv93P4ndFs";
-const YOUTUBE_URL = "http://www.youtube.com/watch?v=";
 
 let playlistStore = assign({}, EventEmitter.prototype , {
 
@@ -20,13 +19,14 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 	_playlist: [],
 	_currentIndex: 0,
 	_currentVideo: null,
+
 	youTube: new Youtube(),
 
 	initialize :function (){
 		this.youTube.setKey(YOUTUBE_API_KEY);
 	},
 
-	fetchPlaylist: function(artistName){
+	fetchPlaylist: function(artistName, serverCallback){
 		if(artistName) {
 			this.youTube.addParam('type', 'video');
 			this.youTube.search(artistName, 10, function (err, results) {
@@ -40,16 +40,21 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 							playlistStore._playlist.push(item.id.videoId);
 						});
 						playlistStore._currentIndex = 0;
-
+						playlistStore._currentVideo = results.items[0];
 						playlistStore.emit(CHANGE_EVENT);
+
 					}
+				}
+
+				if(serverCallback){
+					serverCallback(err, playlistStore._playlistItems, playlistStore._playlist);
 				}
 			});
 		}
 	},
 
 	playVideo: function(videoId){
-		console.log("play video");
+		console.log("play video store");
 		playlistStore._playlistItems.some(function(item, index){
 			if(item.id.videoId == videoId){
 				playlistStore._currentIndex = index;
@@ -59,6 +64,22 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 		});
 
 		playlistStore.emit(PLAY_EVENT);
+	},
+
+	getPlaylist: function(){
+		return playlistStore._playlist;
+	},
+
+	getItems: function(){
+		return playlistStore._playlistItems;
+	},
+
+	getCurrentIndex(){
+		return playlistStore._currentIndex;
+	},
+
+	getCurrentVideo(){
+		return playlistStore._currentVideo;
 	},
 
 	dispatcherIndex: AppDispatcher.register(function(payload){
