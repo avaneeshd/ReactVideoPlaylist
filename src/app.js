@@ -5,7 +5,7 @@ import PlaylistContainer from './modules/PlaylistContainer/PlaylistContainer';
 import materialUI from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import playlistStore from './stores/PlaylistStore';
-
+import ArtistsStore from './stores/ArtistsStore'
 
 injectTapEventPlugin();
 
@@ -28,5 +28,5 @@ function run(){
 		window.playlist = null;
 	}
 
-	ReactDOM.render(<PlaylistContainer items={items}  playlist={playlist}/> , document.getElementById("app"));
+	ReactDOM.render(<PlaylistContainer items={items}  playlist={playlist} artistname={ArtistsStore.artists[0]} /> , document.getElementById("app"));
 }

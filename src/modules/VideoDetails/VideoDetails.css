@@ -1,5 +1,5 @@
 .video-title{
-
+    padding-left: 5px;
 }
 
 .video-description{
@@ -10,4 +10,6 @@
 .video-date{
     color: #888888;
     font-size: 0.8em;
+    padding-left: 5px;
+    margin-top:-10px;
 }

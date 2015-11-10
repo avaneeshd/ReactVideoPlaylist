@@ -6,6 +6,8 @@ import Paper from 'material-ui/lib/paper';
 import ArtistDropdown from '../ArtistDropdown/ArtistDropdown'
 import playlistStore from '../../stores/PlaylistStore';
 import playListActions from '../../actions/PlayListActions';
+import ArtistStore from '../../stores/ArtistsStore';
+import ArtistDetails from '../ArtistDetails/ArtistDetails'
 
 export default class PlaylistContainer extends React.Component{
 	/* Basic React component*/
@@ -15,12 +17,15 @@ export default class PlaylistContainer extends React.Component{
 		this.state.playlist = props.playlist;
 		this.state.index = 0;
 		this.state.items = props.items;
+		this.state.artist = ArtistStore.artistDetails[props.artistname];
 
 		//Initialize Client side store with props
 		playlistStore._playlist = props.playlist;
 		playlistStore._playlistItems = props.items;
 		playlistStore._currentIndex = 0;
 		playlistStore._currentVideo = props.items[0];
+
+		playlistStore._currentArtist = props.artistname;
 
 		this.onLoad = this.onLoad.bind(this);
 		this.onPlay = this.onPlay.bind(this);
@@ -42,7 +47,9 @@ export default class PlaylistContainer extends React.Component{
 		console.log("change"+ playlistStore.getCurrentIndex());
 		this.setState({items: playlistStore.getItems(),
 			index: playlistStore.getCurrentIndex(),
-			playlist: playlistStore.getPlaylist()});
+			playlist: playlistStore.getPlaylist(),
+			artist: ArtistStore.artistDetails[playlistStore.getCurrentArtist()]
+		});
 	}
 
 	onPlay(){
@@ -56,6 +63,7 @@ export default class PlaylistContainer extends React.Component{
 			<div className="PlaylistContainer-outer">
 				<div className="ArtistsContainer">
 					<ArtistDropdown showProgress={false}/>
+					<ArtistDetails artist={this.state.artist} />
 				</div>
 				<Player playlist={this.state.playlist} video={this.state.index} />
 				<Playlist showProgress={false} items={items} />

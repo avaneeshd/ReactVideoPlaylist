@@ -8,7 +8,10 @@ export default class VideoDetails extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {videoId: props.video, title: "", date: "", description:""};
+		this.state = {videoId: props.video,
+			title: playlistStore._currentVideo.snippet.title,
+			date: playlistStore._currentVideo.snippet.publishedAt,
+			description:playlistStore._currentVideo.snippet.description};
 		this.handleChange = this.handleChange.bind(this);
 	}
 
@@ -21,7 +24,7 @@ export default class VideoDetails extends React.Component {
 
 	handleChange(videoId) {
 		if(videoId && playlistStore._currentVideo) {
-			console.log("update video details", playlistStore._currentVideo);
+			console.log("update video details");
 			this.setState({
 				title: playlistStore._currentVideo.snippet.title,
 				date: playlistStore._currentVideo.snippet.publishedAt,
@@ -34,8 +37,8 @@ export default class VideoDetails extends React.Component {
 		return (
 			<div>
 				<h4 className="video-title">{this.state.title}</h4>
-				<div className="video-description">{this.state.description}</div>
 				<div className="video-date">Published on {Common.formatDate(this.state.date)}</div>
+				<div className="video-description">{this.state.description}</div>
 			</div>
 		);
 	}

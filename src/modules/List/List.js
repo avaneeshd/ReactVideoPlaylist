@@ -33,11 +33,11 @@ export default class List extends React.Component{
 				</div>);
 		});
 
-		listItems.push(<FlatButton className="load-button" label="Load More" secondary={true} />);
+		listItems.push(<FlatButton key="btn-load-more" className="load-button" label="Load More" secondary={true} />);
 
 		return (
 			<div className="list-outer">
-				<MaterialList>
+				<MaterialList subheader="Playlist">
 					{listItems}
 				</MaterialList>
 			</div>

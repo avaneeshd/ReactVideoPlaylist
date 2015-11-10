@@ -19,6 +19,7 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 	_playlist: [],
 	_currentIndex: 0,
 	_currentVideo: null,
+	_currentArtist: null,
 
 	youTube: new Youtube(),
 
@@ -29,6 +30,7 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 	fetchPlaylist: function(artistName, serverCallback){
 		playlistStore.initialize();
 		if(artistName) {
+			this._currentArtist = artistName;
 			this.youTube.addParam('type', 'video');
 			this.youTube.search(artistName, 10, function (err, results) {
 				if (err) {
@@ -80,6 +82,10 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 
 	getCurrentVideo(){
 		return playlistStore._currentVideo;
+	},
+
+	getCurrentArtist(){
+		return playlistStore._currentArtist;
 	},
 
 	dispatcherIndex: AppDispatcher.register(function(payload){

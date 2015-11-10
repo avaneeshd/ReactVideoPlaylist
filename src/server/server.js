@@ -44,7 +44,7 @@ server.get('*', (req, res, next) => {
 		}else {
 			data.serializedItems = JSON.stringify(items);
 			data.serializedPlaylist = JSON.stringify(playlist);
-			data.body = ReactDOM.renderToString(<PlaylistContainer items={itemsList} playlist={playList}/>);
+			data.body = ReactDOM.renderToString(<PlaylistContainer items={itemsList} playlist={playList} artistname={ArtistsStore.artists[0]}/>);
 
 			res.render('index', {bodyContent: data.body,
 				serializedPlaylist:data.serializedPlaylist,

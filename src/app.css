@@ -6,6 +6,12 @@ body{
     background: #EFEEE9;
 }
 
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #000;
+}
+
 .title-bar{
     position: fixed;
     margin: 0;
@@ -21,5 +27,17 @@ body{
     width: 10%;
     padding: 1.5%;
     font-weight: bold;
+    display: inline-block;
+}
 
+ul.menu{
+    display: inline;
+    padding: 0;
+}
+
+ul.menu li{
+    list-style: none;
+    display: inline;
+    padding: 0 20px;
+    border-right: 1px solid #CDCDCD;
 }
