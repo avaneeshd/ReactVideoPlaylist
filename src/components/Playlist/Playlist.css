@@ -9,11 +9,21 @@
 }
 
 @media only screen
-and (min-width: 300px) and (max-width: 900px) {
+and (min-width: 300px) and (max-width: 600px) {
   .playlist-outer{
       width: 70%;
       float: left;
       margin: 0 auto;
   }
+
+}
+
+@media only screen
+and (min-width: 600px) and (max-width: 955px) {
+    .playlist-outer{
+        width: 70%;
+        float: left;
+        margin-left:27%;
+    }
 
 }

@@ -6,6 +6,7 @@
     height:auto;
     float:left;
     margin-right:10px;
+    margin-bottom:10px;
 }
 
 a.listitem{
@@ -29,7 +30,7 @@ a.listitem:hover{
 
 /* Responsive css for listitem */
 @media only screen
-and (min-width: 300px) and (max-width: 900px) {
+and (min-width: 300px) and (max-width: 955px) {
     .listitem{
         margin:0;
     }

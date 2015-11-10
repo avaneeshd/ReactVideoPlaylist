@@ -17,21 +17,20 @@ const server = express();
 
 server.set('port', 3000);
 
-/* --- Serve static files in public directory ---- */
+/*  Serve static files in public directory */
 server.use(express.static(path.join(__dirname, '../public')));
 server.set('view engine', 'jade');
-/* ---- Server side rendering of index.html ---- */
+/* Server side rendering of index.html */
 
-/* ----
+/*
  * Handle requests
- * ---- */
+ **/
 
-server.get('*', (req, res, next) => {
-
+server.get('/', (req, res, next) => {
 	injectTapEventPlugin();
-	/* ----
+	/*
 	 * Render App and inject into html
-	 * ---- */
+	 */
 
 	PlayListStore.fetchPlaylist(ArtistsStore.artists[0] , function(err, items, playlist){
 		let data = {body: '', serializedItems: [], serializedPlaylist:[]};
@@ -50,7 +49,7 @@ server.get('*', (req, res, next) => {
 				serializedPlaylist:data.serializedPlaylist,
 				serializedItems:data.serializedItems,
 				title:"Yahoo Playlist",
-				appName: "Playlist" });
+				appName: "YahooPlex" });
 
 			next();
 		}

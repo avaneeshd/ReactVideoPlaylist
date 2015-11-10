@@ -16,7 +16,7 @@
 
 
 @media only screen
-and (min-width: 300px) and (max-width: 900px) {
+and (min-width: 300px) and (max-width: 600px) {
     .ArtistsContainer{
         width: 70%;
         float: left;
@@ -24,9 +24,7 @@ and (min-width: 300px) and (max-width: 900px) {
         height: auto;
         position: relative;
     }
-
     .PlaylistContainer-outer{
         margin:5% 13%;
     }
-
 }
