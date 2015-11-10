@@ -25,6 +25,7 @@ $ git clone https://github.com/avaneeshd/YahooVideoPlaylist.git YahooVideoPlayli
 $ cd YahooVideoPlaylist
 $ npm install                   # Install Node.js components listed in ./package.json
 $ npm install -g gulp           # Install Gulp globally if not installed
+$ npm install -g babel          # Install babel globally if not installed
 ```
 
 ### How to Run
@@ -33,6 +34,15 @@ Just run gulp command in the applications root folder to start the server
 
 ```shell
 $ gulp 
+```
+then your server should start at [http://localhost:3000](http://localhost:3000)
+open this url in your browser to run the applicaiton.
+
+### How to test
+Runs simple mocha tests to check the youtube API and playlist store
+
+```shell
+$ npm test
 ```
 
 ### Documentation
