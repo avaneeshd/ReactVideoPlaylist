@@ -1,0 +1,16 @@
+//
+   Created by avaneeshdesai on 11/9/15.
+doctype html
+html
+    head
+        title #{title}
+        link(rel="stylesheet", href="style.css")
+    body
+        main
+            nav.title-bar
+                div.title-logo Titlebar
+            section(id="app") !{bodyContent}
+        script(src="bundle.js")
+        script(type='text/javascript').
+            var items=!{serializedItems}
+            var playlist=!{serializedPlaylist}
