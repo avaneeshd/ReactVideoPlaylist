@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import Playlist from '../Playlist/Playlist';
 import Player from '../Player/Player'
 import Paper from 'material-ui/lib/paper';
+import ArtistDropdown from '../ArtistDropdown/ArtistDropdown'
 import playlistStore from '../../stores/PlaylistStore';
 import playListActions from '../../actions/PlayListActions';
 
@@ -19,7 +20,7 @@ export default class PlaylistContainer extends React.Component{
 		playlistStore._playlist = props.playlist;
 		playlistStore._playlistItems = props.items;
 		playlistStore._currentIndex = 0;
-		playListActions.play(props.playlist[0]);
+		playlistStore._currentVideo = props.items[0];
 
 		this.onLoad = this.onLoad.bind(this);
 		this.onPlay = this.onPlay.bind(this);
@@ -52,10 +53,13 @@ export default class PlaylistContainer extends React.Component{
 	render(){
 		let items = this.state.items;
 		return (
-			<Paper zDepth={3} rounded={false} className="PlaylistContainer-outer">
+			<div className="PlaylistContainer-outer">
+				<div className="ArtistsContainer">
+					<ArtistDropdown showProgress={false}/>
+				</div>
 				<Player playlist={this.state.playlist} video={this.state.index} />
 				<Playlist showProgress={false} items={items} />
-			</Paper>
+			</div>
 		);
 	}
 }

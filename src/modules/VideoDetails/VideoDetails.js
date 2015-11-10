@@ -33,9 +33,9 @@ export default class VideoDetails extends React.Component {
 	render() {
 		return (
 			<div>
-				<h4>{this.state.title}</h4>
-				<div>{this.state.description}</div>
-				<div>Published on {Common.formatDate(this.state.date)}</div>
+				<h4 className="video-title">{this.state.title}</h4>
+				<div className="video-description">{this.state.description}</div>
+				<div className="video-date">Published on {Common.formatDate(this.state.date)}</div>
 			</div>
 		);
 	}

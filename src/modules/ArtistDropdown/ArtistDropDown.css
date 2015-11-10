@@ -4,7 +4,7 @@
 
 .ArtistDropDown-container > div:first-child{
     float: left;
-    width: 80%;
+    width: 80% !important;
 }
 
 .showProgress{

@@ -1,3 +1,7 @@
 .list-outer{
     clear: both;
 }
+
+.load-button{
+    width:100%;
+}

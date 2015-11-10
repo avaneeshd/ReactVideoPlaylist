@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import MaterialList from 'material-ui/lib/lists/list';
 import ListItem  from '../ListItem/ListItem';
 import ListDivider from 'material-ui/lib/lists/list-divider'
+import FlatButton from 'material-ui/lib/flat-button'
 
 export default class List extends React.Component{
 	/* Basic React component*/
@@ -20,17 +21,23 @@ export default class List extends React.Component{
 			return snippet;
 		});
 
-		data.forEach(function(item){
+		data.forEach(function(item, index){
+			let divider = <ListDivider />;
+			if(index == data.length-1){
+				divider = "";
+			}
 			listItems.push(
 				<div key={item.id}>
 					<ListItem data={item} />
-					<ListDivider />
+					{ divider}
 				</div>);
 		});
 
+		listItems.push(<FlatButton className="load-button" label="Load More" secondary={true} />);
+
 		return (
 			<div className="list-outer">
-				<MaterialList subheader="Playlist">
+				<MaterialList>
 					{listItems}
 				</MaterialList>
 			</div>

@@ -1,6 +1,32 @@
 .PlaylistContainer-outer{
-    margin: 0 5%;
-    padding: 10px;
+    margin: 4% 0;
     float:left;
-    width:90%
+    width:100%;
+}
+
+
+.ArtistsContainer{
+    position: fixed;
+    height:100vh;
+    width:23%;
+    float: left;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    background: #FFFFFF;
+}
+
+
+@media only screen
+and (min-width: 300px) and (max-width: 850px) {
+    .ArtistsContainer{
+        width: 70%;
+        float: left;
+        margin: 0 auto;
+        height: auto;
+        position: relative;
+    }
+
+    .PlaylistContainer-outer{
+        margin:5% 13%;
+    }
+
 }

@@ -1,6 +1,6 @@
 .listitem-thumbnail{
-    width:150px;
-    height:80px;
+    width:100%;
+    height:auto;
     float:left;
     margin-right:10px;
 }
@@ -8,5 +8,30 @@
 .listitem{
     min-height:120px;
     font-size: 0.8em !important;
+    padding:2%;
+    margin: 4% 0;
 }
 
+.listitem div div{
+    padding:0px !important;
+}
+a.listitem {
+    transition: all .2s ease-in-out;
+}
+a.listitem:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.19), 0 6px 10px rgba(0, 0, 0, 0.23)
+}
+
+
+@media only screen
+and (min-width: 300px) and (max-width: 850px) {
+    .listitem{
+        margin:0;
+    }
+
+    .listitem-thumbnail{
+        width:150px;
+    }
+
+}

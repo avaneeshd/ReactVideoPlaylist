@@ -19,10 +19,8 @@ server.set('port', 3000);
 
 /* --- Serve static files in public directory ---- */
 server.use(express.static(path.join(__dirname, '../public')));
-
+server.set('view engine', 'jade');
 /* ---- Server side rendering of index.html ---- */
-const templateFile = path.join(__dirname, '../index.html');
-const template = _.template(fs.readFileSync(templateFile, 'UTF-8'));
 
 /* ----
  * Handle requests
@@ -47,8 +45,12 @@ server.get('*', (req, res, next) => {
 			data.serializedItems = JSON.stringify(items);
 			data.serializedPlaylist = JSON.stringify(playlist);
 			data.body = ReactDOM.renderToString(<PlaylistContainer items={itemsList} playlist={playList}/>);
-			const html = template(data);
-			res.status(200).send(html);
+
+			res.render('index', {bodyContent: data.body,
+				serializedPlaylist:data.serializedPlaylist,
+				serializedItems:data.serializedItems,
+				title:"Yahoo Playlist"});
+
 			next();
 		}
 	});

@@ -1,7 +1,8 @@
 .video-player{
     float: left;
-    width: 60%;
-    margin:20px;
+    width: 50%;
+    margin:1%;
+    margin-left: 25%;
 }
 
 .videoWrapper{
@@ -19,12 +20,11 @@
     height: 100%;
 }
 
-
 @media only screen
 and (min-width: 300px) and (max-width: 850px) {
     .video-player{
-        width: 90%;
-        float: left;
+        width: 70%;
+        margin: 0 auto;
     }
 
 }

@@ -14,7 +14,7 @@ export default class Playlist extends React.Component{
 		this.init();
 		this.handleChange = this.handleChange.bind(this);
 
-		//Inital State
+		// Inital State
 		this.state = {currentArtist : '1', showProgress: false};
 	}
 

@@ -46,7 +46,6 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 
 					}
 				}
-
 				if(serverCallback){
 					serverCallback(err, playlistStore._playlistItems, playlistStore._playlist);
 				}
