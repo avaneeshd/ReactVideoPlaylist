@@ -7,8 +7,7 @@ let artistsStore = {
 			 'Elton John',
 			 'Stevie Wonder',
 			 'Frank Sinatra',
-			 'Louis Armstrong',
-			 'Taylor Swift' ],
+			 'Louis Armstrong'],
 
 	artistDetails: {
 		"Elton John": {
@@ -36,12 +35,6 @@ let artistsStore = {
 			name:"Louis Armstrong",
 			desc: "Louis Armstrong, nicknamed Satchmo or Pops, was an American jazz trumpeter, composer and singer who was one of the pivotal and most influential figures in jazz music.",
 			bornOn:"August 4, 1901"
-		},
-		"Taylor Swift":{
-			image:"https://usatlife.files.wordpress.com/2014/05/1taylorswift-mug.jpg?w=1000&h=1405",
-			name:"Taylor Swift",
-			desc: "Taylor Alison Swift is an American singer-songwriter and actress. Raised in Wyomissing, Pennsylvania, she moved to Nashville, Tennessee, at the age of 14 to pursue a career in country music.",
-			bornOn:"December 13, 1989"
 		}
 	},
 

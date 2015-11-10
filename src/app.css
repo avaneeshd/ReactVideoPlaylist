@@ -19,22 +19,22 @@ a{
     position: fixed;
     margin: 0;
     width: 100%;
-    background: #ffffff;
+    background: #FFFFFF;
     z-index: 10000;
     box-sizing: border-box;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .title-bar .title-logo{
-    background: #FFAD01;
+    background: #4101AF;
     width: 10%;
     padding: 1.5%;
     font-weight: bold;
     display: inline-block;
 }
 
-.title-bar .logo{
-    width:50px;
+.title-bar .app-name{
+    color: #FFFFFF;
 }
 
 ul.menu{
