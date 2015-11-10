@@ -18,7 +18,7 @@
 ### Getting Started
 
 Install [Node.js](https://nodejs.org/) and NPM if not already installed.
-Just [clone](https://github.com/avaneeshd/YahooVideoPlaylist.git) this repository
+Just [clone](https://github.com/avaneeshd/YahooVideoPlaylist.git) this repository and get started.
 
 ```shell
 $ git clone https://github.com/avaneeshd/YahooVideoPlaylist.git YahooVideoPlaylist
@@ -30,14 +30,14 @@ $ npm install -g babel          # Install babel globally if not installed
 
 ### How to Run
 This application uses Gulp to create a build and start the local server.
-! Please make sure you have gulp installed globally
-Just run gulp command in the applications root folder to start the server
+[!Please make sure you have gulp and babel installed globally].
+Just run gulp command in the applications root folder to start the server.
 
 ```shell
 $ gulp 
 ```
 then your server should start at [http://localhost:3000](http://localhost:3000)
-open this url in your browser to run the applicaiton.
+open this url in your browser to run the application.
 
 ### How to test
 Runs simple mocha tests to check the youtube API and playlist store
@@ -47,6 +47,6 @@ $ npm test
 ```
 
 ### Documentation
-Additional documents about this application can be found in docs directory
+Additional documents about this application can be found in *[docs](https://github.com/avaneeshd/YahooVideoPlaylist/tree/master/docs)* directory
 
 
