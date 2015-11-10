@@ -4,10 +4,21 @@
 > and runs on a [Node.js](https://nodejs.org/) / [Express](http://expressjs.com/) server.
 > This application allows you to play videos from youtube by various artists.
 
+### Technologies Used:
+* Node.JS
+* Express
+* React
+* Flux
+* Gulp
+* ES6
+* Babel.JS
+* Material UI
+* Browserify
+
 ### Getting Started
 
 Install [Node.js](https://nodejs.org/) and NPM if not already installed.
-Just [clone](https://github.com/avaneeshd/YahooVideoPlaylist.git) 
+Just [clone](https://github.com/avaneeshd/YahooVideoPlaylist.git) this repository
 
 ```shell
 $ git clone https://github.com/avaneeshd/YahooVideoPlaylist.git YahooVideoPlaylist
