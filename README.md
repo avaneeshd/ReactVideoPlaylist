@@ -50,3 +50,9 @@ $ npm test
 Additional documents about this application can be found in *[docs](https://github.com/avaneeshd/YahooVideoPlaylist/tree/master/docs)* directory
 
 
+### References
+[Youtube Search](https://developers.google.com/youtube/v3/docs/search/list)
+
+[Youtube Iframe API](https://developers.google.com/youtube/iframe_api_reference?hl=en)
+
+[React - Getting Started](https://facebook.github.io/react/docs/getting-started.html)
