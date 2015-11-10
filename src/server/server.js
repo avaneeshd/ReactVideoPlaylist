@@ -48,7 +48,7 @@ server.get('/', (req, res, next) => {
 				serializedPlaylist:data.serializedPlaylist,
 				serializedItems:data.serializedItems,
 				title:"Yahoo Playlist",
-				appName: "YahooPlex" });
+				appName: "Yahoo Music" });
 
 			next();
 		}

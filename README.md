@@ -29,7 +29,8 @@ $ npm install -g babel          # Install babel globally if not installed
 ```
 
 ### How to Run
-This application uses [Gulp] to create a build and start the local server
+This application uses Gulp to create a build and start the local server.
+! Please make sure you have gulp installed globally
 Just run gulp command in the applications root folder to start the server
 
 ```shell

@@ -4,7 +4,7 @@
   "description": "Assignment module for Yahoo Interview",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./tests/"
   },
   "keywords": [
     "yahoo",
@@ -49,7 +49,6 @@
     "react-addons-transition-group": "0.14.2",
     "react-addons-update": "0.14.2",
     "react-dom": "0.14.2",
-    "react-materialize": "0.1.0",
     "react-tap-event-plugin": "0.2.1",
     "youtube-node": "1.3.0"
   }

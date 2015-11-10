@@ -31,7 +31,7 @@ gulp.task('build-css', function(){
 			.pipe(gulp.dest('build/public'));
 });
 
-gulp.task('start', function () {
+gulp.task('watch', ['build', 'build-server', 'build-css'], function () {
 	console.log("Starting server");
 	fs.stat('build/server/server.js', function(err, stat) {
 		if(err == null) {
@@ -41,10 +41,6 @@ gulp.task('start', function () {
 			})
 		}
 	});
-
-});
-
-gulp.task('watch', ['build', 'build-server', 'build-css', 'start'], function () {
 });
 
 gulp.task('default', ['watch']);
