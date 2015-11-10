@@ -5,7 +5,6 @@ import express from 'express';
 import React from 'react';
 import ReactDOM from '../../node_modules/react-dom/server';
 
-import router from './router';
 import PlaylistContainer from '../components/PlaylistContainer/PlaylistContainer';
 import PlayListActions from '../actions/PlayListActions';
 import PlayListStore from '../stores/PlayListStore';
