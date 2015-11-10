@@ -6,6 +6,7 @@ var babel = require('gulp-babel');
 var nodemon = require('gulp-nodemon');
 var concat = require('gulp-concat');
 var reactify = require('reactify');
+var fs = require("fs");
 
 gulp.task('build', function () {
 	return browserify({entries: './src/app.js', debug: true})
@@ -32,10 +33,15 @@ gulp.task('build-css', function(){
 
 gulp.task('start', function () {
 	console.log("Starting server");
-	nodemon({
-		script: 'build/server/server.js'
-		, env: { 'NODE_ENV': 'development' }
-	})
+	fs.stat('build/server/server.js', function(err, stat) {
+		if(err == null) {
+			nodemon({
+				script: 'build/server/server.js'
+				, env: { 'NODE_ENV': 'development' }
+			})
+		}
+	});
+
 });
 
 gulp.task('watch', ['build', 'build-server', 'build-css', 'start'], function () {
