@@ -9,7 +9,7 @@ var reactify = require('reactify');
 var fs = require("fs");
 
 gulp.task('build', function () {
-	return browserify({entries: './src/app.js', debug: true})
+	return browserify({entries: './src/app.js', debug: false})
 		.transform(babelify, {presets: ["es2015", "react"]})
 		.transform(reactify, {harmony:true, es6module:true})
 		.bundle()
