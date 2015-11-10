@@ -43,3 +43,7 @@ export default class VideoDetails extends React.Component {
 		);
 	}
 }
+
+VideoDetails.propTypes = {
+	video: PropTypes.string.isRequired
+};

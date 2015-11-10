@@ -39,7 +39,6 @@ gulp.task('start', function () {
 });
 
 gulp.task('watch', ['build', 'build-server', 'build-css', 'start'], function () {
-	gulp.watch('*.js', ['build', 'build-server', 'build-css', 'start']);
 });
 
 gulp.task('default', ['watch']);

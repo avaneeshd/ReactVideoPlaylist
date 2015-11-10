@@ -4,8 +4,12 @@ import MaterialListItem from 'material-ui/lib/lists/list-item';
 import PlaylistActions from '../../actions/PlayListActions';
 import Common from '../../utils/common';
 
-export default class PlaylistContainer extends React.Component{
-	/* Basic React component*/
+export default class ListItem extends React.Component{
+	/* React component for ListItem
+	*  Acts as a wrapper for materialListItem
+	*
+	*  handleClick @type:function
+	* */
 
 	constructor(){
 		super();
@@ -31,3 +35,7 @@ export default class PlaylistContainer extends React.Component{
 		);
 	}
 }
+
+ListItem.propTypes = {
+	data: PropTypes.object.isRequired
+};

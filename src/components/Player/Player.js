@@ -1,32 +1,39 @@
 
 import React, { PropTypes } from 'react';
 import VideoDetails from '../VideoDetails/VideoDetails';
-//import YoutubePlayer from 'react-youtube';
 import playListStore from '../../stores/PlaylistStore';
-
 import loadAPI from './YoutubePlayerApi';
 
+/**
+ * Player Component
+ * wrapper for youtube player IFrame API
+ *
+ */
+
 export default class Player extends React.Component {
-	/* Basic React component*/
+	/* React component for Youtube videoo player API*/
+
 	constructor(props) {
 		super(props);
+		//bind all the functions to "this" object
 		this.createPlayer = this.createPlayer.bind(this);
 		this.onPlay = this.onPlay.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onPlayerReady = this.onPlayerReady.bind(this);
 		this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
 
+		//Set Initial State
 		this.state= { playerIsReady: false,
 			          videoIndex:props.video,
 			          playlist:props.playlist
 		};
 
+		//Load Youtube API asynchronously
 		loadAPI().then(this.createPlayer);
 	}
 
 
 	componentWillReceiveProps(newProps){
-		console.log("Received  props");
 		this.setState({
 			videoIndex: newProps.video,
 			playlist: newProps.playlist
@@ -41,6 +48,7 @@ export default class Player extends React.Component {
 	}
 
 	createPlayer(){
+		// Creates a Youtube player after the API has loaded
 		let self = this;
 		console.log("load player");
 		self.player = new YT.Player('player', {
@@ -70,17 +78,20 @@ export default class Player extends React.Component {
 	}
 
 	onPlayerReady(){
+		//On Player ready state
 		this.setState({playerIsReady:true});
 		this.loadPlaylist(this.state.playlist, this.state.videoIndex);
 	}
 
 	loadPlaylist(playlist, index){
+		//Load Playlist into the player
 		if(this.player && playlist.length > 0) {
 			this.player.loadPlaylist(playlist, index, 0, "large");
 		}
 	}
 
 	onPlay(index){
+		//Play the selected video in playlist
 		if(this.player && index  !== null){
 			this.setState({videoIndex: index });
 			this.player.playVideoAt(index);
@@ -98,3 +109,9 @@ export default class Player extends React.Component {
 		);
 	}
 }
+
+Player.propTypes = {
+	video: PropTypes.number.isRequired,
+	playlist: PropTypes.array.isRequired
+};
+

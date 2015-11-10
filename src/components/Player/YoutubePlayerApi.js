@@ -1,3 +1,12 @@
+/**
+ * Asynchronously loading youtube API
+ * by adding script tag to the HTML file
+ *
+ * Returns a promise that is resolved when
+ * Youtube API is loaded and ready to use
+ * @returns {Promise}
+ */
+
 const api = () => {
 	return new Promise(resolve => {
 		window.onYouTubeIframeAPIReady = () => {

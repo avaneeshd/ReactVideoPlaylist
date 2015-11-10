@@ -1,7 +1,7 @@
 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import PlaylistContainer from './modules/PlaylistContainer/PlaylistContainer';
+import PlaylistContainer from './components/PlaylistContainer/PlaylistContainer';
 import materialUI from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import playlistStore from './stores/PlaylistStore';
@@ -18,6 +18,7 @@ if (window.addEventListener) {
 function run(){
 	let items =[];
 	let playlist = [];
+	//Check for state
 	if(window.items !== undefined){
 		items = window.items;
 		window.items = null;
@@ -27,6 +28,8 @@ function run(){
 		playlist = window.playlist;
 		window.playlist = null;
 	}
+	//Rerender the react component on client side with passed state
 
-	ReactDOM.render(<PlaylistContainer items={items}  playlist={playlist} artistname={ArtistsStore.artists[0]} /> , document.getElementById("app"));
+	ReactDOM.render(<PlaylistContainer items={items}  playlist={playlist} artistname={ArtistsStore.artists[0]} />
+		, document.getElementById("app"));
 }

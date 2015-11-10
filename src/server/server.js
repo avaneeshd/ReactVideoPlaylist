@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from '../../node_modules/react-dom/server';
 
 import router from './router';
-import PlaylistContainer from '../modules/PlaylistContainer/PlaylistContainer';
+import PlaylistContainer from '../components/PlaylistContainer/PlaylistContainer';
 import PlayListActions from '../actions/PlayListActions';
 import PlayListStore from '../stores/PlayListStore';
 import ArtistsStore from '../stores/ArtistsStore';
@@ -49,7 +49,8 @@ server.get('*', (req, res, next) => {
 			res.render('index', {bodyContent: data.body,
 				serializedPlaylist:data.serializedPlaylist,
 				serializedItems:data.serializedItems,
-				title:"Yahoo Playlist"});
+				title:"Yahoo Playlist",
+				appName: "Playlist" });
 
 			next();
 		}

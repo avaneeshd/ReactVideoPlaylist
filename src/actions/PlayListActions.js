@@ -1,18 +1,24 @@
 import AppDispatcher from '../utils/AppDispatcher';
+import Constants from '../utils/Constants';
 
-const FETCH_PLAYLIST = "FETCH_PLAYLIST";
-const PLAY_VIDEO = "PLAY_VIDEO";
+/**
+ * Module to dispatch playlist related actions
+ * @type {{fetch: Function, play: Function}}
+ */
+
+
 let playListActions = {
+
 	fetch: function(artistName){
 		AppDispatcher.handleViewAction({
-			actionType: FETCH_PLAYLIST,
+			actionType: Constants.Actions.FETCH_PLAYLIST,
 			data: { artist : artistName }
 		});
 	},
 
 	play: function(videoId){
 		AppDispatcher.handleViewAction({
-			actionType: PLAY_VIDEO,
+			actionType: Constants.Actions.PLAY_VIDEO,
 			data: { videoId : videoId }
 		});
 	}

@@ -10,7 +10,10 @@ import ArtistStore from '../../stores/ArtistsStore';
 import ArtistDetails from '../ArtistDetails/ArtistDetails'
 
 export default class PlaylistContainer extends React.Component{
-	/* Basic React component*/
+	/*  Parent component that encapsulates
+	 *  Artist Dropdown , Playlist and player
+	 *  */
+
 	constructor(props){
 		super(props);
 		this.state = {};
@@ -44,7 +47,7 @@ export default class PlaylistContainer extends React.Component{
 	}
 
 	onLoad(){
-		console.log("change"+ playlistStore.getCurrentIndex());
+		console.log("Artist Changed: "+ playlistStore.getCurrentIndex());
 		this.setState({items: playlistStore.getItems(),
 			index: playlistStore.getCurrentIndex(),
 			playlist: playlistStore.getPlaylist(),
@@ -53,7 +56,7 @@ export default class PlaylistContainer extends React.Component{
 	}
 
 	onPlay(){
-		console.log("play video"+ playlistStore.getCurrentIndex());
+		console.log("Play Video :"+ playlistStore.getCurrentIndex());
 		this.setState({index: playlistStore.getCurrentIndex() });
 	}
 
@@ -71,3 +74,10 @@ export default class PlaylistContainer extends React.Component{
 		);
 	}
 }
+
+PlaylistContainer.propTypes = {
+	playlist: PropTypes.array.isRequired,
+	items: PropTypes.array.isRequired,
+	artistname: PropTypes.string.isRequired
+};
+
