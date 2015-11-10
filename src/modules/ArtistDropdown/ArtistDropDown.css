@@ -2,12 +2,14 @@
     margin: 0 30px 0 16px
 }
 
-.ArtistDropDown-container > div{
-    width:100% !important;
+.ArtistDropDown-container > div:first-child{
+    float: left;
+    width: 80%;
 }
 
 .showProgress{
     display: inline-block;
+    width: 30px;
 }
 
 .hideProgress{

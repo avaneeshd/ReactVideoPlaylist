@@ -27,6 +27,7 @@ let playlistStore = assign({}, EventEmitter.prototype , {
 	},
 
 	fetchPlaylist: function(artistName, serverCallback){
+		playlistStore.initialize();
 		if(artistName) {
 			this.youTube.addParam('type', 'video');
 			this.youTube.search(artistName, 10, function (err, results) {

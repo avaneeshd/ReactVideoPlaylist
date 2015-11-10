@@ -20,10 +20,12 @@ function run(){
 	let playlist = [];
 	if(window.items !== undefined){
 		items = window.items;
+		window.items = null;
 	}
 
 	if(window.playlist !== undefined){
 		playlist = window.playlist;
+		window.playlist = null;
 	}
 
 	ReactDOM.render(<PlaylistContainer items={items}  playlist={playlist}/> , document.getElementById("app"));

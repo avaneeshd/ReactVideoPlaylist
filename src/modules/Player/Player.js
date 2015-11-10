@@ -14,6 +14,7 @@ export default class Player extends React.Component {
 		this.onPlay = this.onPlay.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onPlayerReady = this.onPlayerReady.bind(this);
+		this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
 
 		this.state= { playerIsReady: false,
 			          videoIndex:props.video,
@@ -46,7 +47,8 @@ export default class Player extends React.Component {
 			height: '390',
 			width: '640',
 			events: {
-				onReady: self.onPlayerReady
+				onReady: self.onPlayerReady,
+				onStateChange: self.onPlayerStateChange
 			}
 		});
 	}
@@ -56,6 +58,14 @@ export default class Player extends React.Component {
 			if(this.state.playerIsReady) {
 				this.loadPlaylist(playlist, index);
 			}
+		}
+	}
+
+	onPlayerStateChange(event){
+		//On Previous and Next button
+		if(event.data === 3) {
+			playListStore.playVideo(this.state.playlist[event.target.getPlaylistIndex()]);
+			this.setState({videoIndex: event.target.getPlaylistIndex()})
 		}
 	}
 

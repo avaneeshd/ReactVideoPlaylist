@@ -29,9 +29,11 @@ export default class List extends React.Component{
 		});
 
 		return (
-			<MaterialList subheader="Playlist">
-				{listItems}
-			</MaterialList>
+			<div className="list-outer">
+				<MaterialList subheader="Playlist">
+					{listItems}
+				</MaterialList>
+			</div>
 		);
 	}
 }
