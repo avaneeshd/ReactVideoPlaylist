@@ -12,6 +12,7 @@
 * Gulp
 * ES6
 * Babel.JS
+* Jade templates
 * Material UI
 * Browserify
 
